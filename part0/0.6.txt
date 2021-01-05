@@ -1,0 +1,4 @@
+title 0.6: new note SPA
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+server-->browser: HTTP status code 201 created {"message":"note created"}
