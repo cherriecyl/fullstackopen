@@ -5,6 +5,8 @@ const App = (props) => {
   const [selected, setSelected] = useState(0)
   const noVotes = new Array(props.anecdotes.length+1).join('0').split('').map(parseFloat)
   const [votes, setVotes] = useState(noVotes)
+  const highestVoteCount = Math.max(...votes)
+  const highestVoted = votes.indexOf(highestVoteCount)
   const handleVote = () => {
     const copy = [...votes];
     copy[selected] += 1;
@@ -16,11 +18,17 @@ const App = (props) => {
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{props.anecdotes[selected]}
       <br/>
       has {votes[selected]} votes</p>
       <button onClick={handleVote}>vote</button>
       <button onClick={handleClick}>next anecdote</button>
+      <h1>Anecdote with most votes</h1>
+      <p>{props.anecdotes[highestVoted]}
+      <br/>
+      has {highestVoteCount} votes</p>
+
     </div>
   )
 }
